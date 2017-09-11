@@ -1,3 +1,4 @@
+import { getTestBed } from '@angular/core/testing';
 import { LoginService } from './../login-panel/login-panel.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -6,16 +7,15 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './user-info-panel.component.html',
   styleUrls: ['./user-info-panel.component.css']
 })
-export class UserInfoPanelComponent implements OnInit {
-  authenticated: Boolean;
-  principal: string;
+export class UserInfoPanelComponent {
 
-  constructor(loginService : LoginService) {
-     this.authenticated = loginService.isAuthenticated();     
-     this.principal = loginService.getPrincipal();
-  }
+  authenticated: boolean;
+  user: string;
 
-  ngOnInit() {
+  constructor(private loginService : LoginService) {
+    this.user = localStorage.getItem('currentUser');
+    this.authenticated = this.loginService.isAuthenticated();
   }
 
 }
+
