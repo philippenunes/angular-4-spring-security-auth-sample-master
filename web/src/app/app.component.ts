@@ -1,4 +1,5 @@
-import { Component, SimpleChanges, Input } from '@angular/core';
+import { AuthGuard } from './guards/auth.service';
+import { Component, SimpleChanges, Input, OnInit, AfterContentChecked } from '@angular/core';
 import { LoginService } from "./login-panel/login-panel.service";
 
 @Component({
@@ -6,13 +7,17 @@ import { LoginService } from "./login-panel/login-panel.service";
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {  
+export class AppComponent implements OnInit, AfterContentChecked {   
 
   authenticated: boolean = false;
 
-  constructor(private loginService: LoginService) {}
+  constructor(private loginService: LoginService) {
+  }
 
-  ngOnInit() {
+   ngOnInit(): void {    
+  }
+  
+  ngAfterContentChecked() {
     this.authenticated = this.loginService.isAuthenticated();
   }
 

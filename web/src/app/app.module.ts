@@ -1,3 +1,4 @@
+import { MenuPrincipalComponent } from './user-menu/menu-principal.component';
 import { AppRoutingModule } from './app.routing.module';
 import { LogoutUserService } from './logout-user/logout-user.service';
 import { LogoutUserComponent } from './logout-user/logout-user.component';
@@ -15,6 +16,7 @@ import { UserInfoPanelComponent } from './user-info-panel/user-info-panel.compon
 import { HttpModule } from "@angular/http";
 import { AuthGuard } from "./guards/auth.service";
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,13 +24,13 @@ import { AuthGuard } from "./guards/auth.service";
     OutroPanelComponent,
     UserInfoPanelComponent,
     LogoutUserComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [
     LoginService,

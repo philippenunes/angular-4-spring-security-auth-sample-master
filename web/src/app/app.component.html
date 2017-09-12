@@ -3,7 +3,7 @@
     <div class="container-fluid">
       <div class="collapse navbar-collapse">
         <ul class="nav nav-pills">
-          <li *ngIf="!authenticated"><a routerLink="/home" routerLinkActive="active">HOME</a></li>
+          <li><a routerLink="/home" routerLinkActive="active">HOME</a></li>
           <li *ngIf="!authenticated"><a routerLink="/login" routerLinkActive="active">LOGIN</a></li>
           <li *ngIf="authenticated"><a routerLink="/outro" routerLinkActive="active">OUTRO</a></li>
           <li *ngIf="authenticated"><a routerLink="/logout" routerLinkActive="active">LOGOUT</a></li>

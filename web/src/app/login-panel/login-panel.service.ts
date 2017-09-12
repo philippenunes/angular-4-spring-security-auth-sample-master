@@ -1,6 +1,6 @@
-import { Injectable, EventEmitter } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+import { Injectable, EventEmitter, Output } from '@angular/core';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
-import { Observable } from 'rxjs';
 import 'rxjs/add/operator/map'
 import 'rxjs/add/operator/do'
 
@@ -8,27 +8,33 @@ import 'rxjs/add/operator/do'
 export class LoginService {
 
     public token: string;
-    private url = '/sample/api/user';
-    authEmitter = new EventEmitter<boolean>();
+    private userUrl = '/sample/api/user';
+    private resourceUrl = '/sample/api/resource';
 
     constructor(private http: Http) {
     }
 
-    isAuthenticated(): boolean {
+    isAuthenticated(): boolean {       
        let authenticated = localStorage.getItem("currentUser");     
-       return authenticated ? true: false; 
+       let isAuthenticated = authenticated ? true: false;      
+       return isAuthenticated;
     }
 
+
     login(headers): Observable<Object> {
-        return this.http.get(this.url, {headers : headers})
+        return this.http.get(this.userUrl, {headers : headers})
         .do((response: Response) => {
             let user = response.json();
             if(user) {
                 localStorage.setItem('currentUser', JSON.stringify(user));
-                this.authEmitter.emit(true);
-                window.location.reload();
+                localStorage.setItem('user', user.principal);                            
             }
-        });      
-           
+        });                 
+    }
+
+    getResource(): Observable<Map<String, Object>> {
+        return this.http.get(this.resourceUrl).map(
+            data => data.json() as Map<String, Object>
+        );        
     }
 }

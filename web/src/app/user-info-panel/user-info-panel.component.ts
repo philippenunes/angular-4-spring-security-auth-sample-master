@@ -11,10 +11,17 @@ export class UserInfoPanelComponent {
 
   authenticated: boolean;
   user: string;
+  id: string;
+  greeting: Map<String, Object>;
 
   constructor(private loginService : LoginService) {
-    this.user = localStorage.getItem('currentUser');
-    this.authenticated = this.loginService.isAuthenticated();
+    this.user = localStorage.getItem('user');    
+  }
+
+  ngOnInit() {
+    this.loginService.getResource().subscribe(
+        (valor) => this.greeting = valor
+    );    
   }
 
 }

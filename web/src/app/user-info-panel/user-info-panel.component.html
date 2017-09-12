@@ -2,13 +2,13 @@
   <div class="panel-heading text-center">
       <h1><small class="text-info">Greeting</small></h1>
   </div>
-  <div *ngIf="authenticated" class="text-center text-info">principal
+  <div *ngIf="loginService.isAuthenticated()" class="text-center text-info">principal
   <br/>
   <p>Hello {{user}}</p>
-  <p>The ID is FAZER</p>
-  <p>The content is FAZER</p>
+  <p>The ID is {{ greeting.id }}</p>
+  <p>The content is {{ greeting.content }}</p>
   </div>
-  <div *ngIf="!authenticated">
+  <div *ngIf="!loginService.isAuthenticated()">
     <br/><br/>
     <p class="text-center text-info">Login to see your greeting</p>
   </div>

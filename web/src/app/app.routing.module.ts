@@ -14,7 +14,7 @@ const appRoutes: Routes = [
     { path: 'outro', component: OutroPanelComponent, canActivate: [AuthGuard]},
     { path: 'home', component: UserInfoPanelComponent },
     { path: 'logout', component: LogoutUserComponent },
-    { path: '',   redirectTo: 'home', pathMatch: 'full', canActivate: [AuthGuard] },
+    { path: '',   redirectTo: 'home', pathMatch: 'full'},
     { path: '**', component: PageNotFoundComponent },
 ];
 
