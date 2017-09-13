@@ -1,4 +1,3 @@
-import { MenuPrincipalComponent } from './user-menu/menu-principal.component';
 import { AppRoutingModule } from './app.routing.module';
 import { LogoutUserService } from './logout-user/logout-user.service';
 import { LogoutUserComponent } from './logout-user/logout-user.component';
@@ -35,8 +34,10 @@ import { AuthGuard } from "./guards/auth.service";
   providers: [
     LoginService,
     AuthGuard,
-    LogoutUserService
+    LogoutUserService,
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  
+ }

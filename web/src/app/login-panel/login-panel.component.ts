@@ -34,23 +34,6 @@ export class LoginPanelComponent implements OnInit {
         this.error = true;
       }
     );
- 
-  
   }
-
-  // login() { 
-  //   let headers: object;    
-  //   headers = this.credentials ? { authorization : "Basic " + btoa(this.credentials.username + ":" + this.credentials.password),
-  //   'X-Requested-With':'XMLHttpRequest'} : {};
-
-  //   this.loginService.login(headers)
-  //   .then(() => {
-  //     this.error = false;    
-  //     this.router.navigate(['home']);  
-  //   })
-  //   .catch(() => {
-  //      this.error = true;
-  //   });      
-
-  }
+}
  
